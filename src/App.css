@@ -1,0 +1,26 @@
+.app {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.bottom-wrapper {
+  min-height: 40px;
+  margin-top: 2vh;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 3vh;
+  margin-bottom: 5vh;
+}
+
+.sort-header {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,24 @@
+.topbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px;
+    background-color: dimgray;
+    color: white;
+  }
+  
+.sortName {
+    font-size: larger;
+  }
+  
+.sortButton {
+    font-size: larger;
+    background-color: black;
+    color: white;
+    margin-left: 5vw;
+    border-color: white;
+  }
