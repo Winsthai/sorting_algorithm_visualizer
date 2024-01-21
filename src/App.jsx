@@ -4,6 +4,7 @@ import Topbar from './components/Topbar/Topbar';
 import ArrayBars from './components/ArrayBars/ArrayBars'
 import generateBubbleSortSwaps from './sorting_algorithms/BubbleSort';
 import generateSelectionSortSwaps from './sorting_algorithms/SelectionSort';
+import generateInsertionSortSwaps from './sorting_algorithms/InsertionSort';
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
   const [currentSort, setSort] = useState("Bubble");
 
   // Track the current sorting speed selected - default is 50 ms
-  const [speed, setSpeed] = useState(50);
+  const [speed, setSpeed] = useState(5);
 
   // Track the current bars that are being "selected" for a swap
   const [selected, setSelected] = useState([null,null]);
@@ -52,6 +53,7 @@ function App() {
     // Using a promise to allow for a timeout delay in the loops that swap bars
     const timer = ms => new Promise(resolve => setTimeout(resolve, ms));
 
+    // Sorting algorithms generate an array containing all the swaps needed to perform the sort
     let swaps = [];
     const tempBars = [...bars];
 
@@ -69,6 +71,7 @@ function App() {
       setFinished(true);
     }
 
+    // Switch statement for each type of sort
     switch (type) {
       case "Bubble":
         swaps = generateBubbleSortSwaps(bars);      
@@ -77,6 +80,11 @@ function App() {
       
       case "Selection":
         swaps = generateSelectionSortSwaps(bars);  
+        animateSwaps();
+        break;
+
+      case "Insertion":
+        swaps = generateInsertionSortSwaps(bars);
         animateSwaps();
         break;
     }  
