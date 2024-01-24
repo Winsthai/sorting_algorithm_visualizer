@@ -5,6 +5,7 @@ import ArrayBars from './components/ArrayBars/ArrayBars'
 import generateBubbleSortSwaps from './sorting_algorithms/BubbleSort';
 import generateSelectionSortSwaps from './sorting_algorithms/SelectionSort';
 import generateInsertionSortSwaps from './sorting_algorithms/InsertionSort';
+import generateMergeSortSwaps from './sorting_algorithms/MergeSort';
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
   const [currentSort, setSort] = useState("Bubble");
 
   // Track the current sorting speed selected - default is 50 ms
-  const [speed, setSpeed] = useState(5);
+  const [speed, setSpeed] = useState(50);
 
   // Track the current bars that are being "selected" for a swap
   const [selected, setSelected] = useState([null,null]);
@@ -50,6 +51,8 @@ function App() {
 
   // Sort based on the current sort selected
   const doSort = (type) => {
+    setFinished(false);
+    
     // Using a promise to allow for a timeout delay in the loops that swap bars
     const timer = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -87,6 +90,11 @@ function App() {
         swaps = generateInsertionSortSwaps(bars);
         animateSwaps();
         break;
+
+      case "Merge":
+        swaps = generateMergeSortSwaps(bars);
+        animateSwaps();
+        break;
     }  
     
   };
@@ -112,6 +120,8 @@ function App() {
             <button onClick={() => setSort("Heap")}>Heap Sort</button>
           </div>
         </div>
+
+
       </div>
     </>
   )
